@@ -1,0 +1,716 @@
+/* Variables pour Mediconnect */
+:root {
+    --primary: #1a5276;
+    --primary-dark: #0e3a52;
+    --primary-light: #2874a6;
+    --secondary: #3498db;
+    --accent: #2ecc71;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+    --light-bg: #ecf0f1;
+    --white: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --border: #bdc3c7;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.patient-header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: white;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.patient-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 15px;
+}
+
+.header-logo {
+    height: 45px;
+    width: auto;
+    border-radius: 6px;
+}
+
+.logo-text h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    white-space: nowrap;
+    margin: 0;
+    color: white;
+    line-height: 1.2;
+}
+
+.patient-tag {
+    background-color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.6rem;
+    margin-left: 6px;
+    font-weight: 600;
+}
+
+.logo-text .subtitle {
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.9;
+    margin-top: 2px;
+}
+
+/* Menu Burger */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+    z-index:  1;
+}
+
+.menu-toggle:focus {
+    outline: none;
+}
+
+/* Contrôles Patient */
+.patient-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.patient-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.patient-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.patient-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.patient-id {
+    font-size: 0.7rem;
+    opacity: 0.9;
+}
+
+.patient-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.patient-notifications {
+    position: relative;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.patient-notifications i {
+    font-size: 1.2rem;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--danger);
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Navigation */
+.patient-nav {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.patient-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.patient-nav .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-bottom-color: var(--accent);
+    font-weight: 600;
+}
+
+/* SECTION HÉRO (du premier code) */
+.hero {
+    position: relative;
+    width: 100%;
+    padding: 80px 20px;
+    background: url("../Images/femme1.png") no-repeat center center/cover;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    min-height: 500px;
+}
+
+/* Contenu (logo, titre, texte, bouton) */
+.hero-left {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+/*LOGO ROND ET CENTRÉ */
+.hero-left img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+/* TITRE */
+.hero-left h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/*  TEXTE */
+.hero-left p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/*  BOUTON */
+.cta-button {
+    background: var(--accent);
+    color: white;
+    padding: 15px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.cta-button:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+}
+
+/*  STYLE DES CARTES  */
+.card-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 20px;
+    background: white;
+}
+
+.card {
+    width: 300px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+}
+
+.card img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.card h2 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+}
+
+.card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.card button {
+    background-color: white;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.card button:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+/*  SECTION FONCTIONNEMENT  */
+.Fonctionnement {
+    padding: 80px 20px;
+    background: var(--light-bg);
+}
+
+.fonctionnement-content {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.fonction-img {
+    width: 450px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+}
+
+.fonction-texte h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+}
+
+.fonction-texte p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* Nos services */
+.Services {
+    background-color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.Services h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+    margin-top: 0;
+}
+
+.Services p {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--text-light);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container .card {
+    width: 300px;
+    background-color: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+    position: relative;
+}
+
+.container .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+}
+
+.container .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.container .card p {
+    padding: 20px;
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* FOOTER  */
+footer {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: white;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px 30px;
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+    position: relative;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.footer-logo {
+    height: 60px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    max-width: 300px;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+.footer-links i {
+    width: 18px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--accent);
+}
+
+
+/*  RESPONSIVE */
+@media (max-width: 1200px) {
+    .services-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .fonctionnement-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .fonction-img {
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    .card-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .patient-nav {
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--primary);
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .patient-nav.active {
+        max-height: 400px;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .patient-nav .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 4px solid transparent;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    
+    .patient-nav .nav-link.active {
+        border-left-color: var(--accent);
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .hero-left h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-left p {
+        font-size: 1rem;
+    }
+    
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+    
+    .patient-controls {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .patient-info {
+        text-align: center;
+    }
+    
+    .hero-left {
+        padding: 20px;
+    }
+    
+    .hero-left img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .Services h1 {
+        font-size: 1.8rem;
+    }
+    
+    .Services p {
+        font-size: 1rem;
+    }
+    
+    .fonction-texte h1 {
+        font-size: 2rem;
+    }
+}

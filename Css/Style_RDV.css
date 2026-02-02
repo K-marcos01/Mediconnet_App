@@ -1,0 +1,334 @@
+/* STYLES SPÉCIFIQUES À LA PAGE DES RENDEZ-VOUS */
+
+/* Section principale des rendez-vous */
+.rdv-section {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    margin-bottom: 40px;
+    width: 1000px;
+}
+
+/* Barre d'actions */
+.rdv-actions-bar {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Champ de recherche */
+.search-input {
+    flex: 1;
+    min-width: 300px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    font-size: 1rem;
+    background-color: #f5f5f5;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+/* Bouton nouveau rendez-vous */
+.btn-nouveau-rdv {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #1a73e8;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.btn-nouveau-rdv:hover {
+    background: #4285f4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Conteneur des filtres */
+.filters-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+/* Boutons de filtre */
+.filter-btn-rdv {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #2e7d32;
+    background: white;
+    color: #2e7d32;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    min-width: 100px;
+    text-align: center;
+}
+
+.filter-btn-rdv:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn-rdv.active,
+.filter-btn-rdv.active:hover {
+    background: #2e7d32;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Grille des rendez-vous */
+.rdv-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* Carte de rendez-vous */
+.rdv-card-custom {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    animation: slideIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+/* Animation des cartes */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.rdv-card-custom:nth-child(1) { animation-delay: 0.1s; }
+.rdv-card-custom:nth-child(2) { animation-delay: 0.2s; }
+.rdv-card-custom:nth-child(3) { animation-delay: 0.3s; }
+.rdv-card-custom:nth-child(4) { animation-delay: 0.4s; }
+.rdv-card-custom:nth-child(5) { animation-delay: 0.5s; }
+.rdv-card-custom:nth-child(6) { animation-delay: 0.6s; }
+
+.rdv-card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* En-tête de la carte */
+.rdv-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Statut du rendez-vous */
+.rdv-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-upcoming {
+    background: rgba(46, 125, 50, 0.1);
+    color: #2e7d32;
+}
+
+.status-past {
+    background: rgba(198, 40, 40, 0.1);
+    color: #c62828;
+}
+
+/* Date du rendez-vous */
+.rdv-date {
+    color: #0e4d64;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Informations du docteur */
+.rdv-doctor {
+    font-size: 1.1rem;
+    color: #1d3557;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+/* Motif du rendez-vous */
+.rdv-motif {
+    color: #0e4d64;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+/* Localisation */
+.rdv-location {
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Actions de la carte */
+.rdv-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Boutons d'action */
+.btn-annuler-rdv,
+.btn-details-rdv {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.btn-annuler-rdv {
+    background: #c62828;
+    color: white;
+}
+
+.btn-annuler-rdv:hover {
+    background: #a81f1f;
+    transform: translateY(-2px);
+}
+
+.btn-details-rdv {
+    background: #e8f0fe;
+    color: #1a73e8;
+    border: 1px solid #1a73e8;
+}
+
+.btn-details-rdv:hover {
+    background: #1a73e8;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Style spécifique pour les rendez-vous passés */
+.rdv-card-custom.past {
+    opacity: 0.85;
+}
+
+.rdv-card-custom.past:hover {
+    opacity: 1;
+}
+
+/* Style pour les rendez-vous annulés */
+.rdv-card-custom.cancelled {
+    background: #f5f5f5;
+    border-color: #ddd;
+}
+
+.rdv-card-custom.cancelled .rdv-status {
+    background: #999;
+    color: white;
+}
+
+/* === MEDIA QUERIES === */
+
+@media (max-width: 1024px) {
+    .rdv-grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .rdv-section {
+        padding: 20px;
+    }
+    
+    .rdv-actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-input {
+        min-width: 100%;
+    }
+    
+    .filters-container {
+        justify-content: center;
+    }
+    
+    .filter-btn-rdv {
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .rdv-grid-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-nouveau-rdv {
+        width: 100%;
+        text-align: center;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .rdv-section {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    .rdv-card-custom {
+        padding: 15px;
+    }
+    
+    .rdv-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .rdv-actions {
+        flex-direction: column;
+    }
+    
+    .rdv-doctor {
+        font-size: 1rem;
+    }
+}

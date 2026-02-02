@@ -1,0 +1,102 @@
+ body {
+        margin: 0;
+        padding: 0;
+        background: #0e1a27;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Zone vidéo */
+    .video-container {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video {
+        width: 90%;
+        height: 75%;
+        background: #1f2d3d;
+        border-radius: 20px;
+        border: 3px solid #0fa96e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        color: #9ddfc8;
+    }
+
+    /* Minuteur */
+    .timer {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(0,0,0,0.4);
+        padding: 8px 14px;
+        border-radius: 12px;
+        font-size: 18px;
+    }
+
+    /* Mini vidéo utilisateur */
+    .small-video {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 130px;
+        height: 90px;
+        background: #324a5e;
+        border-radius: 12px;
+        border: 2px solid #0fa96e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    /* Barre des boutons */
+    .controls {
+        height: 110px;
+        background: #111b25;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 26px;
+    }
+
+    .btn {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background: #1e2a36;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 2px solid transparent;
+    }
+
+    .btn:hover {
+        background: #273544;
+    }
+
+    .btn img {
+        width: 32px;
+        height: 32px;
+        filter: invert(100%);
+    }
+
+    /* Bouton rouge (raccrocher) */
+    .btn-end {
+        background: #e64040 !important;
+        border-color: #a82727 !important;
+    }
+
+    .btn-end:hover {
+        background: #b82f2f !important;
+    }

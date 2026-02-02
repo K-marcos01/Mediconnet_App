@@ -1,0 +1,199 @@
+/* ===== NOTIFICATIONS ===== */
+
+/* Bouton dans le header */
+.patient-notifications {
+    position: relative;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s;
+    margin-left: 10px;
+}
+
+.patient-notifications:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.patient-notifications i {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e74c3c;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Popup */
+.notifications-popup {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 380px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 10000;
+    display: none;
+    border: 1px solid #ddd;
+}
+
+.notifications-popup.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header du popup */
+.notifications-header {
+    background: #1a5276;
+    color: white;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notifications-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-close-popup {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.btn-close-popup:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Liste des notifications */
+.notifications-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.notification-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #7f8c8d;
+}
+
+.notification-empty i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+/* Style pour les notifications (appliqué par JavaScript) */
+.notification-item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.notification-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+/* Footer du popup */
+.notifications-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.btn-mark-all {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.btn-mark-all:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Overlay */
+.notifications-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: none;
+}
+
+.notifications-overlay.show {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .notifications-popup {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    
+    .notifications-list {
+        max-height: none;
+        height: calc(100vh - 130px);
+    }
+}

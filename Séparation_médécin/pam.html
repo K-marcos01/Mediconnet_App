@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Paramètres</title>
+
+<!-- CSS spécifique -->
+<link rel="stylesheet" href="../Css/parametres.css">
+</head>
+<body>
+
+<div class="settings-container">
+  <h2>Paramètres</h2>
+
+  <div class="setting-group">
+    <label>Langue</label>
+    <select>
+      <option>Français</option>
+      <option>English</option>
+      <option>Espanol</option>
+      <option> Latin </option>
+      <option> chinois</option>
+    </select>
+  </div>
+
+  <div class="setting-group">
+    <label>Caméra par défaut</label>
+    <select>
+      <option>Caméra intégrée</option>
+      <option>Caméra USB</option>
+      <option> Caméra wi-fi</option>
+      <option> caméra FireWire</option>
+    </select>
+  </div>
+
+  <div class="setting-group">
+    <label>Microphone par défaut</label>
+    <select>
+      <option>Micro intégré</option>
+      <option>Micro externe</option>
+      <option>Micro-casque</option>
+      <option>Micro USB</option>
+    </select>
+  </div>
+
+  <div class="setting-group switch">
+    <label>Notifications</label>
+    <label class="switch">
+        <select>
+       <option>Sourdine</option>
+       <option>active</option>
+        </select>
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <button class="save-btn" onclick="saveSettings()"><a href="../Séparation_médécin/Téléconsultation2.html">enregistrés</a></button>
+
+  <div class="success" id="success"></div>
+</div>
+
+<script>
+function saveSettings() {
+  document.getElementById("success").innerText =
+    "Paramètres enregistrés avec succès ✔";
+}
+</script>
+
+</body>
+</html>

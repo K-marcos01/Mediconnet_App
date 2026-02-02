@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Tester mon matériel</title>
+
+<!-- CSS spécifique -->
+<link rel="stylesheet" href="../Css/tester-materiel.css">
+
+</head>
+<body>
+
+<div class="test-container">
+  <h2>Tester mon matériel</h2>
+  <p>Vérifiez que votre caméra et votre micro fonctionnent correctement</p>
+
+  <video id="video" autoplay playsinline></video>
+
+  <button onclick="startTest()">Démarrer le test</button>
+
+  <a href="../Html/Téléconsultation.html">Retour</a>
+
+  <div class="status" id="status"></div>
+</div>
+
+<script>
+async function startTest() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: true
+    });
+    document.getElementById("video").srcObject = stream;
+    document.getElementById("status").innerText =
+      "Caméra et micro fonctionnent correctement ✔";
+  } catch (e) {
+    document.getElementById("status").innerText =
+      "Accès caméra ou micro refusé ❌";
+  }
+}
+</script>
+
+</body>
+</html>

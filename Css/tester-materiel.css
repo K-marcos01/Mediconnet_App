@@ -1,0 +1,106 @@
+/* ============================
+   PAGE : TESTER MON MATÉRIEL
+============================ */
+
+/* ----- Base ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #eaf4fb, #f6fbf8);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----- Conteneur principal ----- */
+.test-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 650px;
+  padding: 35px;
+  border-radius: 22px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.test-container a{
+  text-decoration: none;
+  display: grid;
+  gap: 30px;
+  margin-top: 20px;
+  background: #1fa84f;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  height: 50px;
+}
+
+/* ----- Titre ----- */
+.test-container h2 {
+  color: #0b3c5d;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.test-container p {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* ----- Vidéo ----- */
+#video {
+  width: 100%;
+  height: 360px;
+  background: #000;
+  border-radius: 18px;
+  border: 4px solid #1fa84f;
+  margin-bottom: 25px;
+}
+
+/* ----- Bouton ----- */
+button {
+  background: #1fa84f;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #16863e;
+  transform: scale(1.05);
+}
+
+/* ----- Message état ----- */
+.status {
+  margin-top: 20px;
+  font-weight: 600;
+  color: #1fa84f;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .test-container {
+    padding: 25px;
+  }
+
+  #video {
+    height: 240px;
+  }
+}

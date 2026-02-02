@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Téléconsultation</title>
+    <link rel="stylesheet" href="../Css/teleconsultation2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Médecin -->
+<header class="doctor-header">
+    <div class="header-container">
+        <div class="doctor-brand">
+            <img src="../Image/Logo Vf.jpg" alt="Mediconnect" class="header-logo">
+            <div>
+                <h1>Mediconnect <span class="professional">PROFESSIONNEL</span></h1>
+                <p class="subtitle">Plateforme médicale sécurisée</p>
+            </div>
+        </div>
+        
+        <!-- Bouton menu burger -->
+        <button class="menu-toggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="doctor-controls">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Rechercher un patient..." id="searchPatient">
+            </div>
+            
+            <div class="doctor-profile">
+                <div class="doctor-info">
+                    <span class="doctor-name">Dr. Jean MARTIN</span>
+                    <span class="doctor-specialty">Médecin Généraliste</span>
+                </div>
+                <div class="doctor-avatar">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div class="doctor-notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   <nav class="doctor-nav">
+            <a href="../Php/Page_d_Acceuil.php" class="nav-link "><i class="fas fa-tachometer-alt"></i> Tableau de bord</a>
+            <a href="../Html/Patients.html" class="nav-link"><i class="fas fa-users"></i> Patients</a>
+            <a href="../Html/agenda.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Agenda</a>
+            <a href="../Html/dossier-medecin.html" class="nav-link"><i class="fas fa-folder-open"></i> Dossiers médicaux</a>
+            <a href="../Html/Téléconsultation2.html" class="nav-link active"><i class="fas fa-video"></i> Téléconsultations</a>
+            <a href="../Html/Connexion_Inscription.html" class="nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        </nav>
+</header>
+
+<div class="container">
+
+    <h1 class="title">Téléconsultation médicale</h1>
+    <p class="subtitle">Consultez vos médecins à distance</p>
+
+    <div class="grid">
+
+        <div class="card-start">
+            <div class="icon">📹</div>
+             <h2>Démarrer une consultation</h2>
+            <p>Lancez une consultation vidéo instantanée</p>
+            <a href="../Séparation_médécin/Visio.html">
+            <button class="btn-start">Démarrer maintenant</button>
+            </a>
+        </div>
+
+        <div class="card-start">
+            <div class="icon">📷</div>
+            <h2>Tester mon matériel</h2>
+            <p>Vérifiez votre caméra et micro.</p>
+            <a href="../Séparation_médécin/teste.html">
+                <button class="btn-start">Tester</button>
+            </a>
+        </div>
+
+        <div class="card-start">
+            <div class="icon purple">⚙️</div>
+            <h2>Paramètres</h2>
+            <p>Configurez vos préférences.</p>
+            <a href="../Séparation_médécin/pam.html">
+            <button class="btn-start">Configurer</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>Contacter un patient</h2>
+            <p>Débutez votre téléconsultation avec votre patient</p>
+            <button class="btn">Voir les patients</button>
+        </div>
+    </div>
+
+</div>
+<section class="section-table">
+    <h2 class="section-title">Prochaines consultations</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Patient</th>
+                <th>Type de consultation</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>10 Nov 2025</td>
+                <td>09:30</td>
+                <td>Albert</td>
+                <td>Consultation cardiologique</td>
+            </tr>
+            <tr>
+                <td>10 Déc 2025</td>
+                <td>14:00</td>
+                <td>Marie</td>
+                <td>Consultation de suivi</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="section-table">
+    <h2 class="section-title">Consultations récentes</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Durée</th>
+                <th>Patient</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>15 Nov 2025</td>
+                <td>30 min</td>
+                <td>M. Albert</td>
+                <td>Consultation générale</td>
+            </tr>
+            <tr>
+                <td>12 Nov 2025</td>
+                <td>20 min</td>
+                <td>Mme Zola</td>
+                <td>Consultation dermatologique</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</section>
+</body>
+</html>

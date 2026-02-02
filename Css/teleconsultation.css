@@ -1,0 +1,1180 @@
+/* Variables spécifiques médecin */
+:root {
+    --doctor-primary: #1a5276;          /* Bleu foncé principal */
+    --doctor-primary-dark: #0e3a52;     /* Bleu très foncé */
+    --doctor-primary-light: #2874a6;    /* Bleu plus clair */
+    --doctor-secondary: #3498db;        /* Bleu ciel/secondaire */
+    --doctor-accent: #2ecc71;           /* Vert accent (Statut Ouvert, Navigation Active) */
+    --doctor-danger: #e74c3c;           /* Rouge (Notifications, Erreurs) */
+    --doctor-warning: #f39c12;          /* Jaune/Orange */
+    --doctor-light-bg: #ecf0f1;         /* Gris très clair (Arrière-plan) */
+    --doctor-white: #ffffff;
+    --doctor-text-dark: #2c3e50;        /* Texte principal foncé */
+    --doctor-text-light: #7f8c8d;       /* Texte secondaire clair */
+    --doctor-border: #bdc3c7;
+    --doctor-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --doctor-shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+    
+    /* Variables corrigées / Ajoutées */
+    --light-blue: #d4e7f5; /* Couleur de fond pour les cartes de démarrage */
+    --medical-green: #1aa34a; /* Vert pour les tableaux / cartes */
+}
+
+/* RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--doctor-light-bg);
+    color: var(--doctor-text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/*  HEADER (pleine largeur)  */
+.doctor-header {
+    background: linear-gradient(135deg, var(--doctor-primary-dark), var(--doctor-primary));
+    color: white;
+    box-shadow: var(--doctor-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.doctor-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.header-logo {
+    height: 50px;
+    width: auto;
+}
+
+.doctor-brand h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.professional {
+    background-color: var(--doctor-accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    margin-left: 5px;
+}
+
+.doctor-brand .subtitle {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    display: block;
+    text-align: left;
+}
+
+/* Menu Burger */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+    z-index: 1001;
+}
+
+.menu-toggle:focus {
+    outline: none;
+}
+
+.doctor-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.search-bar {
+    position: relative;
+    width: 250px;
+    max-width: 100%;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--doctor-text-light);
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px 8px 8px 35px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+.doctor-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.doctor-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.doctor-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.doctor-specialty {
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+.doctor-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--doctor-secondary), var(--doctor-accent));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.doctor-notifications {
+    position: relative;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.doctor-notifications i {
+    font-size: 1.2rem;
+}
+
+.notification-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: var(--doctor-danger);
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Navigation médecin */
+.doctor-nav {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0 10px;
+    display: flex;
+    transition: all 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.doctor-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 15px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    justify-content: center;
+}
+
+.doctor-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.doctor-nav .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-bottom-color: var(--doctor-accent);
+    font-weight: 600;
+}
+
+/* Menu burger pour mobile */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .doctor-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--doctor-primary);
+        flex-direction: column;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content: flex-start;
+    }
+    
+    .doctor-nav.active {
+        max-height: 400px;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .doctor-nav .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 4px solid transparent;
+        justify-content: flex-start;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .doctor-nav .nav-link.active {
+        border-left-color: var(--doctor-accent);
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .doctor-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Pour les très grands écrans, ajouter un peu d'espacement */
+@media (min-width: 1200px) {
+    .doctor-nav .nav-link {
+        padding: 12px 20px;
+    }
+}
+
+/* CONTENU PRINCIPAL CENTRÉ (entre header et footer) */
+.main-content {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* CONTENEUR PRINCIPAL & TITRES */
+.container {
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: #1d3557;
+    text-align: center;
+    width: 100%;
+}
+
+.subtitle {
+    color: var(--doctor-text-light);
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+}
+
+/* GRID (Cartes de Démarrage)*/
+.grid {
+    display: flex;
+    flex-wrap:nowrap;
+    gap: 60px;
+    width: 400px;
+    margin-inline-start: -600px;
+}
+
+/* CARTE PRINCIPALE (Démarrer/Teste)  */
+.card-start {
+    background: var(--light-blue);
+    color: #1d3557;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+    transition: 0.2s;
+    border: var(--doctor-primary-dark) 5px solid;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 325px;
+    width: 325px;
+}
+.card-plan {
+    background: var(--light-blue);
+    color: var(--doctor-text-dark);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+    transition: 0.2s;
+    border: var(--doctor-primary-dark) 5px solid;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 325px;
+    width: 325px;
+}
+
+.card-start :hover {
+    transform: scale(1.03);
+}
+
+.card {
+    background: var(--medical-green);
+    border-left: 5px solid var(--medical-green);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    color:var(--medical-green);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 325px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: white;
+    margin: 0 0 10px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.btn {
+    background: white;
+    color: var(--doctor-text-dark);
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    min-width: 150px;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: var(--doctor-light-bg);
+    transform: translateY(-2px);
+}
+
+/* ICONES  */
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.green { color: var(--medical-green); }
+.purple { color: #7048e8; }
+
+/*     Sections tableau      */
+.section-table {
+    margin-top: 40px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--medical-green);
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    color: var(--medical-green);
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Table style */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.table thead {
+    background: var(--doctor-primary);
+    color: white;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th:first-child,
+.table td:first-child {
+    text-align: left;
+}
+
+/*     Styles de la Section Recherche   */
+.search-container {
+    max-width: 1100px;
+    margin: 30px auto 40px;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Barre de Recherche Principale --- */
+.search-box {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid var(--doctor-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: none;
+    font-size: 1rem;
+    color: var(--doctor-text-dark);
+    background-color: var(--doctor-white);
+    text-align: center;
+}
+
+.search-input::placeholder {
+    color: var(--doctor-text-light);
+    text-align: center;
+}
+
+.search-button {
+    background-color: var(--doctor-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: var(--doctor-primary-dark);
+}
+
+/* --- Filtres de Spécialités --- */
+.specialties-filter {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 1100px;
+    box-shadow: var(--doctor-shadow);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-label {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--doctor-text-dark);
+    text-align: center;
+    width: 100%;
+}
+
+.filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+}
+
+.pill-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: var(--doctor-light-bg);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    justify-content: center;
+}
+
+.pill-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* background */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 34px;
+}
+
+/* circle */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+/* ON state */
+input:checked + .slider {
+    background-color: var(--doctor-accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* rounded switch */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* --- Grille Résultats/Carte --- */
+.results-map-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.results-list {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.map-container {
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    box-shadow: var(--doctor-shadow-lg);
+    overflow: hidden;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Cacher le texte de substitution/image de fond, car la carte Leaflet sera affichée */
+#teleconsultationMap {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Carte de Résultat Individuel --- */
+.result-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid var(--doctor-accent);
+    transition: transform 0.2s;
+    width: 100%;
+    text-align: center;
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.result-card h3 {
+    font-size: 1.3rem;
+    color: var(--doctor-text-dark);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--doctor-accent);
+    font-weight: 500;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.status i {
+    font-size: 1rem;
+}
+
+.address {
+    font-size: 0.9rem;
+    color: var(--doctor-text-light);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.info-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--doctor-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-button {
+    padding: 10px 20px;
+    border: 1px solid var(--doctor-border);
+    border-radius: 6px;
+    background-color: var(--doctor-white);
+    color: var(--doctor-text-dark);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-width: 120px;
+}
+
+.call-button {
+    border-color: var(--doctor-secondary);
+    color: var(--doctor-secondary);
+}
+
+.itinerary-button {
+    border-color: var(--doctor-primary);
+    color: var(--doctor-primary);
+}
+
+.action-button:hover {
+    background-color: var(--doctor-light-bg);
+}
+
+.appointment-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--doctor-primary);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.appointment-button:hover {
+    background-color: var(--doctor-primary-dark);
+}
+
+/* --- Media Queries pour le Responsive --- */
+@media (max-width: 992px) {
+    .results-map-grid {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .results-list {
+        max-height: 50vh;
+        width: 100%;
+    }
+
+    .map-container {
+        height: 300px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-button {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* =============================== */
+/*        MESSAGERIE (REMPLACE MAP) */
+/* =============================== */
+
+.messages-container {
+    background-color: var(--doctor-white);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: var(--doctor-shadow);
+    height: 70vh;
+    width: 100%;
+}
+
+/* Header messages */
+.messages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--doctor-border);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.messages-header h3 {
+    font-size: 1.2rem;
+    color: var(--doctor-text-dark);
+    margin: 0;
+    text-align: center;
+}
+
+.messages-filters select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--doctor-border);
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Liste des messages */
+.messages-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Message individuel */
+.message-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--doctor-light-bg);
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    width: 100%;
+    max-width: 600px;
+}
+
+.message-item:hover {
+    background-color: #e6eef5;
+    transform: translateY(-1px);
+}
+
+/* États */
+.message-item.unread {
+    border-left: 4px solid var(--doctor-secondary);
+    background-color: #eef6fc;
+}
+
+.message-item.important {
+    border-left: 4px solid var(--doctor-danger);
+}
+
+/* Icône */
+.message-icon {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenu */
+.message-content {
+    flex: 1;
+    text-align: left;
+}
+
+.message-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0;
+    color: var(--doctor-text-dark);
+    text-align: left;
+}
+
+.message-text {
+    font-size: 0.85rem;
+    color: var(--doctor-text-light);
+    margin: 2px 0 0;
+    text-align: left;
+}
+
+/* Heure */
+.message-time {
+    font-size: 0.75rem;
+    color: var(--doctor-text-light);
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* =============================== */
+/*       LECTURE MESSAGE           */
+/* =============================== */
+
+.message-viewer {
+    position: absolute;
+    inset: 0;
+    background: var(--doctor-white);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-viewer.hidden {
+    display: none;
+}
+
+.viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--doctor-border);
+    padding-bottom: 8px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.viewer-title {
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+    flex: 1;
+}
+
+.close-viewer {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.viewer-body {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--doctor-text-dark);
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.viewer-actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 800px;
+    justify-content: center;
+}
+
+.reply-input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--doctor-border);
+    text-align: center;
+}
+
+.reply-btn {
+    background: var(--doctor-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: var(--doctor-danger);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* =============================== */
+/*       CONVERSATION CHAT         */
+/* =============================== */
+
+.conversation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 100%;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+}
+
+.chat-message {
+    max-width: 80%;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.chat-message.received {
+    background-color: var(--doctor-light-bg);
+    align-self: flex-start;
+    text-align: left;
+}
+
+.chat-message.sent {
+    background-color: var(--doctor-primary);
+    color: white;
+    align-self: flex-end;
+    text-align: right;
+}
+
+/* ========================================== */
+/* FOOTER (pleine largeur) */
+/* ========================================== */
+
+/* Ajoutez votre footer CSS ici si nécessaire */
+/* Le footer doit rester en pleine largeur comme le header */
+
+/* Responsive pour le contenu centré */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .card-start, .card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .results-map-grid {
+        padding: 0 10px;
+    }
+    
+    .messages-container {
+        height: 50vh;
+    }
+    
+    .section-table {
+        padding: 15px;
+        margin: 20px 10px;
+    }
+    
+    .table {
+        font-size: 0.9rem;
+    }
+    
+    .table th, .table td {
+        padding: 8px;
+    }
+    
+    .filter-pills {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pill-button {
+        width: 100%;
+        max-width: 300px;
+        justify-content: space-between;
+    }
+    
+    .main-content {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .messages-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .messages-filters select {
+        width: 100%;
+    }
+}

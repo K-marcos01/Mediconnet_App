@@ -1,0 +1,59 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediconnect | Authentification</title>
+    <link rel="stylesheet" href="../Css/Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-section"></div>
+
+        <div class="form-section">
+            <div class="auth-card">
+                <div class="logo-header">
+                    <img src="../Images/Logo Vf.jpg" alt="Logo" class="form-logo">
+                </div>
+
+                <div class="auth-tabs">
+                    <button id="tab-login" class="tab-btn active" onclick="toggleForm('login')">Connexion</button>
+                    <button id="tab-signup" class="tab-btn" onclick="toggleForm('signup')">Inscription</button>
+                </div>
+
+                <form id="form-login" class="auth-form">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Mot de passe" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Se connecter</button>
+                </form>
+
+                <form id="form-signup" class="auth-form" style="display:none;">
+                    <div class="input-row">
+                        <input type="text" name="nom" placeholder="Nom" required>
+                        <input type="text" name="prenom" placeholder="Prénom" required>
+                    </div>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Mot de passe" required>
+                    <input type="text" name="code_invite" id="code_invite" placeholder="Code invitation (Optionnel)" oninput="detectRole()">
+                    
+                    <div id="spec-group" style="display:none; width:100%;">
+                        <select name="specialite" class="input-select">
+                            <option value="Généraliste">Généraliste</option>
+                            <option value="Cardiologue">Cardiologue</option>
+                            <option value="Dentiste">Dentiste</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">Créer mon compte</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../Script/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil - Mediconnect</title>
+    <link rel="stylesheet" href="../Css/Style_Acceuil.css">
+    <link rel="stylesheet" href="../Css/profil-patient.css">
+    <link rel="stylesheet" href="../Css/notification.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Patient   -->
+    <header class="patient-header">
+        <div class="header-container">
+            <div class="patient-brand">
+                <a href="../Php/Page_d_Acceuil.php" class="logo-link">
+                    <img src="../Image/Logo Vf.jpg" alt="Mediconnect" class="header-logo">
+                    <div class="logo-text">
+                        <h1>Mediconnect <span class="patient-tag">PATIENT</span></h1>
+                        <p class="subtitle">Votre santé notre priorité</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="patient-controls">
+                <div class="patient-profile">
+                    <div class="patient-info">
+                        <span class="patient-name" id="patientHeaderName">Allegra OKEMBA</span>
+                        <span class="patient-id">ID: PAT-2025-OKEMBA</span>
+                    </div>
+                    <a href="../Html/profil-patient.html" class="patient-avatar active" id="patientAvatar">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="patient-notifications" id="notificationsBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Popup des notifications -->
+    <div class="notifications-popup" id="notificationsPopup">
+  <div class="notifications-header">
+    <h3><i class="fas fa-bell"></i> Notifications</h3>
+    <button class="btn-close-popup" onclick="closeNotifications()">×</button>
+  </div>
+  
+  <div class="notifications-list" id="notificationsList">
+    <!-- Les notifications apparaîtront ici -->
+  </div>
+  
+  <div class="notifications-footer">
+    <button class="btn-mark-all" onclick="markAllAsRead()">
+      <i class="fas fa-check-double"></i> Tout marquer comme lu
+    </button>
+  </div>
+</div>
+<!-- Overlay pour fermer en cliquant autour -->
+<div class="notifications-overlay" id="notificationsOverlay" onclick="closeNotifications()"></div>
+        
+       <!-- Navigation Patient -->
+       <nav class="patient-nav" id="mainNav">
+      <a href="../Php/Page_d_Acceuil.php" class="nav-link " data-page="dashboard">
+        <i class="fas fa-home"></i> Accueil
+      </a>
+      <a href="../Html/dossier-patient.html" class="nav-link" data-page="dossier">
+        <i class="fas fa-file-medical"></i> Mon dossier
+      </a>
+      <a href="../Html/Rdv.html" class="nav-link " data-page="rdv">
+        <i class="fas fa-calendar-alt"></i> Mes rendez-vous
+      </a>
+      <a href="../Html/Téléconsultation.html" class="nav-link" data-page="teleconsultation">
+        <i class="fas fa-video"></i> Téléconsultations
+      </a>
+      <a href="../Html/Connexion_Inscription.html" class="nav-link" data-page="connexion">
+        <i class="fas fa-sign-out-alt"></i> Déconnexion
+      </a>
+        </header>
+
+    <main class="profile-main">
+        <div class="profile-container">
+            <!-- En-tête du profil -->
+            <div class="profile-header">
+                <h1><i class="fas fa-user-circle"></i> Mon Profil</h1>
+                <p class="profile-subtitle">Gérez vos informations personnelles et vos préférences</p>
+            </div>
+
+            <div class="profile-content">
+                <!-- Section gauche : Photo et informations basiques -->
+                <div class="profile-left">
+                    <div class="profile-card">
+                        <div class="profile-photo-section">
+                            <div class="profile-photo-container">
+                                <div class="profile-photo" id="profilePhoto">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="photo-actions">
+                                    <button class="btn-change-photo" id="changePhotoBtn">
+                                        <i class="fas fa-camera"></i> Changer la photo
+                                    </button>
+                                    <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+                                    <button class="btn-remove-photo" id="removePhotoBtn">
+                                        <i class="fas fa-trash"></i> Supprimer
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-status">
+                                <div class="status-indicator active"></div>
+                                <span class="status-text">Compte actif</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-quick-info">
+                            <div class="info-item">
+                                <i class="fas fa-id-card"></i>
+                                <div>
+                                    <span class="info-label">Identifiant patient</span>
+                                    <span class="info-value" id="patientId">PAT-2025-OKEMBA</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <span class="info-label">Membre depuis</span>
+                                    <span class="info-value" id="memberSince">15 Mars 2024</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <span class="info-label">Niveau de sécurité</span>
+                                    <span class="info-value security-level">Élevé</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section statistiques -->
+                    <div class="profile-card stats-card">
+                        <h3><i class="fas fa-chart-line"></i> Mes Statistiques</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Consultations</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Rendez-vous à venir</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">8</div>
+                                <div class="stat-label">Documents médicaux</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">156</div>
+                                <div class="stat-label">Jours d'utilisation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section droite : Informations détaillées -->
+                <div class="profile-right">
+                    <!-- Informations personnelles -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user-edit"></i> Informations Personnelles</h3>
+                            <button class="btn-edit" id="editPersonalInfo">
+                                <i class="fas fa-edit"></i> Modifier
+                            </button>
+                        </div>
+                        
+                        <div class="info-grid" id="personalInfoDisplay">
+                            <div class="info-row">
+                                <span class="info-label">Nom complet</span>
+                                <span class="info-value" id="displayFullName">Allegra OKEMBA</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Date de naissance</span>
+                                <span class="info-value" id="displayBirthDate">15/06/1990</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Sexe</span>
+                                <span class="info-value" id="displayGender">Féminin</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Numéro de sécurité sociale</span>
+                                <span class="info-value" id="displaySocialSecurity">1 90 06 15 123 456 78</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Groupe sanguin</span>
+                                <span class="info-value" id="displayBloodType">O+</span>
+                            </div>
+                        </div>
+
+                        <!-- Formulaire d'édition (caché par défaut) -->
+                        <form class="edit-form" id="personalInfoForm" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">Prénom</label>
+                                    <input type="text" id="firstName" value="Allegra" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Nom</label>
+                                    <input type="text" id="lastName" value="OKEMBA" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="birthDate">Date de naissance</label>
+                                    <input type="date" id="birthDate" value="1990-06-15" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Sexe</label>
+                                    <select id="gender" required>
+                                        <option value="female" selected>Féminin</option>
+                                        <option value="male">Masculin</option>
+                                        <option value="other">Autre</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="socialSecurity">Numéro de sécurité sociale</label>
+                                <input type="text" id="socialSecurity" value="1 90 06 15 123 456 78" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bloodType">Groupe sanguin</label>
+                                <select id="bloodType">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+" selected>O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-cancel" id="cancelPersonalEdit">Annuler</button>
+                                <button type="submit" class="btn-save">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Coordonnées -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-address-card"></i> Coordonnées</h3>
+                            <button class="btn-edit" id="editContactInfo">
+                                <i class="fas fa-edit"></i> Modifier
+                            </button>
+                        </div>
+                        
+                        <div class="info-grid" id="contactInfoDisplay">
+                            <div class="info-row">
+                                <span class="info-label">Adresse email</span>
+                                <span class="info-value" id="displayEmail">allegra.okemba@email.com</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Téléphone</span>
+                                <span class="info-value" id="displayPhone">+242 05 599 05 05</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Adresse</span>
+                                <span class="info-value" id="displayAddress">123 Avenue de la Santé, Pointe-Noire</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Ville</span>
+                                <span class="info-value" id="displayCity">Pointe-Noire</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Code postal</span>
+                                <span class="info-value" id="displayPostalCode">24200</span>
+                            </div>
+                        </div>
+
+                        <!-- Formulaire d'édition (caché par défaut) -->
+                        <form class="edit-form" id="contactInfoForm" style="display: none;">
+                            <div class="form-group">
+                                <label for="email">Adresse email</label>
+                                <input type="email" id="email" value="allegra.okemba@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" value="+242 05 599 05 05" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Adresse</label>
+                                <input type="text" id="address" value="123 Avenue de la Santé" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">Ville</label>
+                                    <input type="text" id="city" value="Pointe-Noire" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postalCode">Code postal</label>
+                                    <input type="text" id="postalCode" value="24200" required>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-cancel" id="cancelContactEdit">Annuler</button>
+                                <button type="submit" class="btn-save">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Sécurité et préférences -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user-shield"></i> Sécurité & Préférences</h3>
+                        </div>
+                        
+                        <div class="preferences-list">
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Authentification à deux facteurs</h4>
+                                    <p>Améliorez la sécurité de votre compte</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="twoFactorAuth" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Notifications par email</h4>
+                                    <p>Recevez les rappels et actualités</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Notifications SMS</h4>
+                                    <p>Rappels de rendez-vous par SMS</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="smsNotifications">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Langue préférée</h4>
+                                    <p>Langue de l'interface</p>
+                                </div>
+                                <select class="language-select" id="languageSelect">
+                                    <option value="fr" selected>Français</option>
+                                    <option value="en">English</option>
+                                    <option value="es">Español</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="security-actions">
+                            <button class="btn-change-password" id="changePasswordBtn">
+                                <i class="fas fa-key"></i> Changer le mot de passe
+                            </button>
+                            <button class="btn-delete-account" id="deleteAccountBtn">
+                                <i class="fas fa-trash-alt"></i> Supprimer le compte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal pour changer le mot de passe -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-key"></i> Changer le mot de passe</h3>
+                <button class="modal-close" id="closePasswordModal">&times;</button>
+            </div>
+            <form id="passwordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Mot de passe actuel</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Nouveau mot de passe</label>
+                    <input type="password" id="newPassword" required>
+                    <div class="password-strength">
+                        <div class="strength-bar"></div>
+                        <span class="strength-text">Force : Faible</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmer le nouveau mot de passe</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelPasswordChange">Annuler</button>
+                    <button type="submit" class="btn-save">Changer le mot de passe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer (identique à votre footer existant) -->
+     <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <img src="../Image/Logo foot.jpg" alt="Mediconnect" class="footer-logo">
+                    <p>Votre plateforme de téléconsultation médicale fiable et sécurisée.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Php/Page_d_Acceuil.php">Accueil</a></li>
+                        <li><a href="Rdv.html">Rendez-vous</a></li>
+                        <li><a href="dossier-patient.html">Dossier Médical</a></li>
+                        <li><a href="teleconsultation.css">Téléconsultation</a></li>
+                        <li><a href="Connexion.html">Connexion</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +242 05 599 05 05</li>
+                        <li><i class="fas fa-envelope"></i> contact@mediconnect.cg</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Avenue Stephane TCHITCHELE, Centre-ville Pointe-noire</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>À propos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 Mediconnect Téléconsultation. Tous droits réservés.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="../Script/profil-patient.js"></script>
+    <script src="../Script/avatar.js"></script>
+    <script src="../Script/notification.js"></script>
+</body>
+</html>

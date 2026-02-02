@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveau Rendez-vous - Mediconnect</title>
+    <link rel="stylesheet" href="../Css/Style_Acceuil.css">
+    <link rel="stylesheet" href="../Css/Formulaire.css">
+    <link rel="stylesheet" href="../Css/notification.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Patient   -->
+    <header class="patient-header">
+        <div class="header-container">
+            <div class="patient-brand">
+                <a href="Page_d_Acceuil.html" class="logo-link">
+                    <img src="Image/Logo Vf.jpg" alt="Mediconnect" class="header-logo">
+                    <div class="logo-text">
+                        <h1>Mediconnect <span class="patient-tag">PATIENT</span></h1>
+                        <p class="subtitle">Votre santé notre priorité</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="patient-controls">
+                <div class="patient-profile">
+                    <div class="patient-info">
+                        <span class="patient-name" id="patientHeaderName">Allegra OKEMBA</span>
+                        <span class="patient-id">ID: PAT-2025-OKEMBA</span>
+                    </div>
+                    <a href="profil-patient.html" class="patient-avatar" id="patientAvatar">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="patient-notifications" id="notificationsBtn" onclick="toggleNotifications()">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count" id="notificationCount">2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Popup des notifications -->
+    <div class="notifications-popup" id="notificationsPopup">
+  <div class="notifications-header">
+    <h3><i class="fas fa-bell"></i> Notifications</h3>
+    <button class="btn-close-popup" onclick="closeNotifications()">×</button>
+  </div>
+  
+  <div class="notifications-list" id="notificationsList">
+    <!-- Les notifications apparaîtront ici -->
+  </div>
+  
+  <div class="notifications-footer">
+    <button class="btn-mark-all" onclick="markAllAsRead()">
+      <i class="fas fa-check-double"></i> Tout marquer comme lu
+    </button>
+  </div>
+</div>
+<!-- Overlay pour fermer en cliquant autour -->
+
+<div class="notifications-overlay" id="notificationsOverlay" onclick="closeNotifications()"></div>
+        <!-- Navigation Patient -->
+        <nav class="patient-nav" id="mainNav">
+      <a href="Page_d_Acceuil.html" class="nav-link " data-page="dashboard">
+        <i class="fas fa-home"></i> Accueil
+      </a>
+      <a href="dossier-patient.html" class="nav-link" data-page="dossier">
+        <i class="fas fa-file-medical"></i> Mon dossier
+      </a>
+      <a href="Rdv.html" class="nav-link active" data-page="rdv">
+        <i class="fas fa-calendar-alt"></i> Mes rendez-vous
+      </a>
+      <a href="Téléconsultation.html" class="nav-link" data-page="teleconsultation">
+        <i class="fas fa-video"></i> Téléconsultations
+      </a>
+      <a href="Connexion.html" class="nav-link" data-page="connexion">
+        <i class="fas fa-sign-out-alt"></i> Déconnexion
+      </a>
+    </nav>
+    </header>
+
+    <!-- Titre principal -->
+    <h1 class="titre">Prendre un nouveau rendez-vous</h1>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <section class="carte rdv-form-section">
+            <header class="rdv-header">
+                <h1><i class="fas fa-calendar-plus"></i> Nouvelle demande de rendez-vous</h1>
+                <p>Veuillez suivre les étapes ci-dessous pour confirmer votre consultation.</p>
+            </header>
+
+            <!-- Barre de progression -->
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div class="step active" data-step="1">1</div>
+                    <div class="step" data-step="2">2</div>
+                    <div class="step" data-step="3">3</div>
+                    <div class="step" data-step="4">4</div>
+                    <div class="step" data-step="5">5</div>
+                    <div class="step" data-step="6">6</div>
+                </div>
+                <div class="step-labels">
+                    <span class="step-label active">Informations</span>
+                    <span class="step-label">Médecin</span>
+                    <span class="step-label">Date/Heure</span>
+                    <span class="step-label">Motif</span>
+                    <span class="step-label">Santé</span>
+                    <span class="step-label">Validation</span>
+                </div>
+            </div>
+            
+            <!-- Formulaire -->
+            <form id="rdv-form">
+                <!-- Étape 1: Informations -->
+                <div class="form-step active" data-step="1">
+                    <h2>Étape 1 : Vos informations personnelles</h2>
+                    <p class="section-note">Ces informations sont pré-remplies et en lecture seule, sauf indication contraire.</p>
+                    
+                    <div class="field-group">
+                        <label for="nom">Nom et Prénom :</label>
+                        <input type="text" id="nom" value="Allegra OKEMBA" readonly>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="id-patient">ID Patient :</label>
+                        <input type="text" id="id-patient" value="PAT-2025-OKEMBA" readonly>
+                    </div>
+                    
+                    <div class="field-group editable">
+                        <label for="telephone">Téléphone :</label>
+                        <input type="tel" id="telephone" value="00 000 00 00" required>
+                    </div>
+                    
+                    <div class="field-group editable">
+                        <label for="email">Email :</label>
+                        <input type="email" id="email" value="nom@exemple.com" required>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn next-step">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 2: Médecin -->
+                <div class="form-step" data-step="2">
+                    <h2>Étape 2 : Choix du praticien</h2>
+                    
+                    <div class="field-group">
+                        <label for="specialite">Spécialité :</label>
+                        <select id="specialite" required>
+                            <option value="">Sélectionnez une spécialité</option>
+                            <option value="generaliste">Médecin généraliste</option>
+                            <option value="cardiologue">Cardiologue</option>
+                            <option value="gynécologue">Gynécologue</option>
+                            <option value="dentiste">Dentiste</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="medecin">Médecin :</label>
+                        <select id="medecin" required> 
+                            <option value="">Sélectionnez un médecin</option>
+                            <option value="Likibi">Dr. Stevens LIKIBI</option>
+                            <option value="Pandy">Dr. Stéphane PANDY</option>
+                            <option value="Siassia">Dr. Erwin SIASSIA</option>
+                            <option value="Nsikabaka">Dr. Darel NSIKABAKA</option>
+                        </select>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="lieu">Lieu de consultation :</label>
+                        <select id="lieu" required>
+                            <option value="cabinet">Cabinet médical</option>
+                            <option value="hopital">Hôpital (Centre X)</option>
+                            <option value="teleconsultation">Téléconsultation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn prev-step">Précédent</button>
+                        <button type="button" class="btn next-step">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 3: Date et heure -->
+                <div class="form-step" data-step="3">
+                    <h2>Étape 3 : Date et heure de consultation</h2>
+                    
+                    <div class="field-group">
+                        <label for="date-rdv">Date du rendez-vous :</label>
+                        <input type="date" id="date-rdv" required> 
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="heure-rdv">Heure disponible :</label>
+                        <select id="heure-rdv" required>
+                            <option value="">Sélectionnez l'heure</option>
+                            <option value="08:00">08:00 – 09:00</option>
+                            <option value="09:00" disabled>09:00 – 10:00 (Indisponible)</option>
+                            <option value="10:00">10:00 – 11:00</option>
+                            <option value="11:00">11:00 – 12:00</option>
+                        </select>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button type="button" class="btn prev-step">Précédent</button>
+                        <button type="button" class="btn next-step">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 4: Motif -->
+                <div class="form-step" data-step="4">
+                    <h2>Étape 4 : Motif de la consultation</h2>
+                    
+                    <div class="field-group">
+                        <label for="motif-principal">Motif principal :</label>
+                        <select id="motif-principal" required>
+                            <option value="">Choisissez le motif</option>
+                            <option value="consultation">Consultation/Suivi</option>
+                            <option value="douleur">Douleur / Symptôme</option>
+                            <option value="controle">Contrôle annuel</option>
+                            <option value="urgence-legere">Urgence légère (sans danger vital)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="field-group">
+                        <label for="description">Description (maximum 500 caractères) :</label>
+                        <textarea id="description" rows="4" placeholder="Expliquez brièvement votre problème ou l'objet de votre visite..." maxlength="500"></textarea>
+                        <div class="char-counter"><span id="char-count">0</span>/500 caractères</div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button type="button" class="btn prev-step">Précédent</button>
+                        <button type="button" class="btn next-step">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 5: Informations santé -->
+                <div class="form-step" data-step="5">
+                    <h2>Étape 5 : Informations médicales importantes</h2>
+                    <p class="section-note">Ces informations sont optionnelles mais peuvent aider le médecin à se préparer.</p>
+                    
+                    <!-- Allergies -->
+                    <div class="field-group">
+                        <label>Allergies connues :</label>
+                        <div class="radio-group">
+                            <input type="radio" id="allergies-oui" name="allergies" value="oui"> 
+                            <label for="allergies-oui">Oui</label>
+                            <input type="radio" id="allergies-non" name="allergies" value="non" checked> 
+                            <label for="allergies-non">Non</label>
+                        </div>
+                        <div class="details-field" id="allergies-details" style="display: none; margin-top: 10px;">
+                            <label for="allergies-description">Décrivez vos allergies (maximum 300 caractères) :</label>
+                            <textarea id="allergies-description" rows="3" placeholder="Listez vos allergies médicamenteuses, alimentaires, etc..." maxlength="300"></textarea>
+                            <div class="char-counter"><span id="allergies-char-count">0</span>/300 caractères</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Maladies chroniques -->
+                    <div class="field-group">
+                        <label>Maladies chroniques :</label>
+                        <div class="radio-group">
+                            <input type="radio" id="maladies-oui" name="maladies" value="oui"> 
+                            <label for="maladies-oui">Oui</label>
+                            <input type="radio" id="maladies-non" name="maladies" value="non" checked> 
+                            <label for="maladies-non">Non</label>
+                        </div>
+                        <div class="details-field" id="maladies-details" style="display: none; margin-top: 10px;">
+                            <label for="maladies-description">Décrivez vos maladies chroniques (maximum 400 caractères) :</label>
+                            <textarea id="maladies-description" rows="3" placeholder="Indiquez vos maladies chroniques (diabète, hypertension, etc.)..." maxlength="400"></textarea>
+                            <div class="char-counter"><span id="maladies-char-count">0</span>/400 caractères</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Niveau d'urgence -->
+                    <div class="field-group">
+                        <label for="urgence-level">Niveau d'urgence perçu :</label>
+                        <select id="urgence-level">
+                            <option value="normal">Normal</option>
+                            <option value="prioritaire">Prioritaire (nécessite une attention rapide)</option>
+                        </select>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button type="button" class="btn prev-step">Précédent</button>
+                        <button type="button" class="btn next-step">Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 6: Validation -->
+                <div class="form-step" data-step="6">
+                    <h2>Étape 6 : Récapitulatif et confirmation</h2>
+                    
+                    <!-- Récapitulatif -->
+                    <div class="recap-card">
+                        <h3>Récapitulatif de votre rendez-vous :</h3>
+                        <div class="recap-details">
+                            <div class="recap-item">
+                                <span class="recap-label">Patient :</span>
+                                <span class="recap-value" id="recap-nom">Allegra OKEMBA</span>
+                            </div>
+                            <div class="recap-item">
+                                <span class="recap-label">Médecin :</span>
+                                <span class="recap-value" id="recap-medecin"></span>
+                            </div>
+                            <div class="recap-item">
+                                <span class="recap-label">Lieu :</span>
+                                <span class="recap-value" id="recap-lieu"></span>
+                            </div>
+                            <div class="recap-item">
+                                <span class="recap-label">Date :</span>
+                                <span class="recap-value" id="recap-date"></span>
+                            </div>
+                            <div class="recap-item">
+                                <span class="recap-label">Heure :</span>
+                                <span class="recap-value" id="recap-heure"></span>
+                            </div>
+                            <div class="recap-item">
+                                <span class="recap-label">Motif :</span>
+                                <span class="recap-value" id="recap-motif"></span>
+                            </div>
+                            <div class="recap-item">
+                                <span class="recap-label">Allergies :</span>
+                                <span class="recap-value" id="recap-allergies">Non</span>
+                            </div>
+                            <div class="recap-item">
+                                <span class="recap-label">Maladies chroniques :</span>
+                                <span class="recap-value" id="recap-maladies">Non</span>
+                            </div>
+                            <div class="recap-item">
+                                <span class="recap-label">Niveau d'urgence :</span>
+                                <span class="recap-value" id="recap-urgence">Normal</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Confirmation -->
+                    <div class="field-group checkbox-group">
+                        <input type="checkbox" id="confirmation" required>
+                        <label for="confirmation">Je confirme l'exactitude des informations fournies ci-dessus.</label>
+                    </div>
+                    
+                    <!-- Note de sécurité -->
+                    <div class="security-note">
+                        <p>Vos données sont sécurisées et confidentielles</p>
+                    </div>
+
+                    <!-- Boutons -->
+                    <div class="nav-buttons">
+                        <button type="button" class="btn prev-step">Précédent</button>
+                        <button type="submit" class="btn primary-confirm" id="confirmBtn">
+                            Confirmer le rendez-vous
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+     <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <img src="Image/Logo foot.jpg" alt="Mediconnect" class="footer-logo">
+                    <p>Votre plateforme de téléconsultation médicale fiable et sécurisée.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="Page_d_Acceuil.html">Accueil</a></li>
+                        <li><a href="Rdv.html">Rendez-vous</a></li>
+                        <li><a href="dossier-patient.html">Dossier Médical</a></li>
+                        <li><a href="teleconsultation.css">Téléconsultation</a></li>
+                        <li><a href="Connexion.html">Connexion</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +242 05 599 05 05</li>
+                        <li><i class="fas fa-envelope"></i> contact@mediconnect.cg</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Avenue Stephane TCHITCHELE, Centre-ville Pointe-noire</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>À propos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 Mediconnect Téléconsultation. Tous droits réservés.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fichier JavaScript -->
+    <script src="Formulaire.js"></script>
+    <script src="avatar.js"></script>
+    <script src="notification.js"></script>
+</body>
+</html>

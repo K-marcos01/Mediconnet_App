@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Consultation vidéo</title>
+
+<link rel="stylesheet" href="../Css/consultation-video.css">
+
+<script>
+let localStream;
+
+/* Démarrer caméra */
+navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+  .then(stream => {
+    localStream = stream;
+    document.getElementById("localVideo").srcObject = stream;
+  });
+
+/* Raccrocher */
+function endCall() {
+  if (localStream) {
+    localStream.getTracks().forEach(track => track.stop());
+  }
+  window.location.href = "Téléconsultation.html";
+}
+
+/* Micro ON/OFF */
+function toggleMicrophone() {
+  if (localStream) {
+    localStream.getAudioTracks().forEach(track => {
+      track.enabled = !track.enabled;
+    });
+  }
+}
+
+/* Caméra ON/OFF */
+function toggleCamera() {
+  if (localStream) {
+    localStream.getVideoTracks().forEach(track => {
+      track.enabled = !track.enabled;
+    });
+  }
+}
+</script>
+
+</head>
+<body>
+
+<div class="video-container">
+
+  <div class="video-header">
+    <h2>Consultation en cours</h2>
+    <div class="timer" id="timer">00:00</div>
+  </div>
+
+  <div class="video-zone">
+
+    <div class="remote-video">
+      <video autoplay playsinline></video>
+
+      <div class="local-video">
+        <video id="localVideo" autoplay muted playsinline></video>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <h3>Dr lamy</h3>
+      <p>Médecin généraliste</p>
+      <p>Patient : Vous</p>
+      <p>Statut : En ligne</p>
+    </div>
+
+  </div>
+
+  <div class="controls">
+    <button class="control-btn" onclick="toggleMicrophone()">🎤</button>
+    <button class="control-btn" onclick="toggleCamera()">🎥</button>
+    <button class="control-btn end-call" onclick="endCall()">📞</button>
+  </div>
+
+</div>
+
+<script>
+navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+  .then(stream => {
+    document.getElementById("localVideo").srcObject = stream;
+  });
+
+let seconds = 0;
+setInterval(() => {
+  seconds++;
+  const min = String(Math.floor(seconds / 60)).padStart(2, '0');
+  const sec = String(seconds % 60).padStart(2, '0');
+  document.getElementById("timer").innerText = `${min}:${sec}`;
+}, 1000);
+</script>
+
+</body>
+</html>

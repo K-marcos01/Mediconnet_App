@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Dossier Médical - Mediconnect Patient</title>
+    <link rel="stylesheet" href="../Css/style-patient.css">
+    <link rel="stylesheet" href="../Css/notification.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Patient   -->
+    <header class="patient-header">
+        <div class="header-container">
+            <div class="patient-brand">
+                <a href="../Php/Page_d_Acceuil.php" class="logo-link">
+                    <img src="../Images/Logo Vf.jpg" alt="Mediconnect" class="header-logo">
+                    <div class="logo-text">
+                        <h1>Mediconnect <span class="patient-tag">PATIENT</span></h1>
+                        <p class="subtitle">Votre santé notre priorité</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="patient-controls">
+                <div class="patient-profile">
+                    <div class="patient-info">
+                        <span class="patient-name" id="patientHeaderName">Allegra OKEMBA</span>
+                        <span class="patient-id">ID: PAT-2025-OKEMBA</span>
+                    </div>
+                    <a href="../Html/profil-patient.html" class="patient-avatar" id="patientAvatar">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="patient-notifications" id="notificationsBtn" onclick="toggleNotifications()">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count" id="notificationCount">2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       <!-- Popup des notifications (initialement cachée via CSS/JS) -->
+    <div class="notifications-popup" id="notificationsPopup">
+      <div class="notifications-header">
+        <h3><i class="fas fa-bell"></i> Notifications</h3>
+        <!-- Bouton pour fermer la popup -->
+        <button class="btn-close-popup" onclick="closeNotifications()">×</button>
+      </div>
+
+      <!-- Liste dynamique des notifications (remplie par JS) -->
+      <div class="notifications-list" id="notificationsList">
+      </div>
+
+      <div class="notifications-footer">
+        <!-- Action pour marquer toutes les notifications comme lues -->
+        <button class="btn-mark-all" onclick="markAllAsRead()">
+          <i class="fas fa-check-double"></i> Tout marquer comme lu
+        </button>
+      </div>
+    </div>
+
+    <!-- Overlay pour fermer la popup en cliquant en dehors -->
+    <div class="notifications-overlay" id="notificationsOverlay" onclick="closeNotifications()"></div>
+    <!-- Remarque : il y avait deux overlays identiques dans l'original ; un seul suffit normalement -->
+    <!-- Si vous souhaitez conserver deux overlays pour un effet particulier, laissez-les. -->
+        
+        <!-- Navigation Patient -->
+        <nav class="patient-nav" id="mainNav">
+             <a href="../Php/Page_d_Acceuil.php" class="nav-link active" data-page="dashboard">
+        <i class="fas fa-home"></i> Accueil
+      </a>
+            <a href="../Html/dossier-patient.html" class="nav-link" data-page="dossier">
+        <i class="fas fa-file-medical"></i> Mon dossier
+      </a>    
+      <a href="../Html/Rdv.html" class="nav-link" data-page="rdv">
+        <i class="fas fa-calendar-alt"></i> Mes rendez-vous
+      </a>
+      <a href="../Html/Téléconsultation.html" class="nav-link" data-page="teleconsultation">
+        <i class="fas fa-video"></i> Téléconsultations
+      </a>
+      <a href="../Html/Connexion_Inscription.html" class="nav-link" data-page="connexion">
+        <i class="fas fa-sign-out-alt"></i> Déconnexion
+      </a>
+    </nav>
+    </header>
+
+    <!-- Container principal -->
+    <div class="patient-container">
+        <!-- Sidebar avec navigation détaillée -->
+        <aside class="patient-sidebar">
+            <div class="sidebar-header">
+                <div class="patient-avatar-large">
+                    <span id="patientInitials">AO</span>
+                </div>
+                <h3>Mon Dossier Médical</h3>
+                <p class="patient-status">ID: <span id="patientSidebarId">PAT-2025-OKEMBA</span></p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h4><i class="fas fa-user"></i> INFORMATIONS</h4>
+                    <a href="#infos" class="sidebar-item active" data-section="infos">
+                        <i class="fas fa-id-card"></i>
+                        <span>Informations personnelles</span>
+                    </a>
+                    <a href="#medical" class="sidebar-item" data-section="medical">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Données médicales</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <h4><i class="fas fa-history"></i> HISTORIQUE</h4>
+                    <a href="#consultations" class="sidebar-item" data-section="consultations">
+                        <i class="fas fa-stethoscope"></i>
+                        <span>Consultations</span>
+                        <span class="badge" id="consultations-count">3</span>
+                    </a>
+                    <a href="#traitements" class="sidebar-item" data-section="traitements">
+                        <i class="fas fa-pills"></i>
+                        <span>Traitements</span>
+                        <span class="badge" id="traitements-count">2</span>
+                    </a>
+                    <a href="#vaccinations" class="sidebar-item" data-section="vaccinations">
+                        <i class="fas fa-syringe"></i>
+                        <span>Vaccinations</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <h4><i class="fas fa-file-alt"></i> DOCUMENTS</h4>
+                    <a href="#documents" class="sidebar-item" data-section="documents">
+                        <i class="fas fa-file-medical-alt"></i>
+                        <span>Documents médicaux</span>
+                        <span class="badge" id="documents-count">7</span>
+                    </a>
+                    <a href="#analyses" class="sidebar-item" data-section="analyses">
+                        <i class="fas fa-vial"></i>
+                        <span>Résultats d'analyses</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <h4><i class="fas fa-exclamation-circle"></i> URGENCES</h4>
+                    <a href="#urgence" class="sidebar-item emergency" data-section="urgence">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Fiche d'urgence</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="quick-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="blood-type">A+</div>
+                        <div class="stat-label">Groupe sanguin</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="allergies-count">2</div>
+                        <div class="stat-label">Allergies</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="consult-year-count">3</div>
+                        <div class="stat-label">Consultations 2025</div>
+                    </div>
+                </div>
+                <button class="btn-print" onclick="window.print()">
+                    <i class="fas fa-print"></i> Imprimer
+                </button>
+            </div>
+        </aside>
+        
+
+        <!-- Contenu principal -->
+        <main class="patient-main">
+            <!-- En-tête avec infos urgentes -->
+            <div class="main-header">
+                <div>
+                    <h1><i class="fas fa-file-medical"></i> Mon Dossier Médical</h1>
+                    <p class="welcome-text">Bienvenue dans votre espace santé personnel et sécurisé</p>
+                </div>
+                <div class="header-alerts">
+                    <div class="alert emergency-alert" id="urgent-alert">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>
+                            <strong id="alert-title">Allergie sévère :</strong> Pollen
+                            <small>En cas d'urgence, contactez le 15</small>
+                        </div>
+                    </div>
+                    <div class="alert info-alert" id="info-alert">
+                        <i class="fas fa-calendar-check"></i>
+                        <div>
+                            <strong>Prochain RDV :</strong> <span id="next-rdv-date">15/09/2025</span> avec <span id="next-rdv-doctor">Dr. LIKIBI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sections dynamiques -->
+            <section id="infos" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-circle"></i> Informations personnelles</h2>
+                    <button class="btn-edit" onclick="editerInfosPersonnelles()">
+                        <i class="fas fa-edit"></i> Modifier
+                    </button>
+                </div>
+                
+                <div class="info-grid">
+                    <!-- Identité -->
+                    <div class="info-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user"></i> Identité</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-row">
+                                <span class="info-label">Nom :</span>
+                                <span class="info-value" id="patient-nom">OKEMBA</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Prénom :</span>
+                                <span class="info-value" id="patient-prenom">Allegra</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Date de naissance :</span>
+                                <span class="info-value" id="patient-naissance">15/08/2000 (25 ans)</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Sexe :</span>
+                                <span class="info-value" id="patient-sexe">Féminin</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Coordonnées -->
+                    <div class="info-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-address-card"></i> Coordonnées</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-row">
+                                <span class="info-label">Adresse :</span>
+                                <span class="info-value" id="patient-adresse">Avenue Stephane TCHITCHELE, Pointe-Noire</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Téléphone :</span>
+                                <span class="info-value" id="patient-telephone">+242 05 599 05 05</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Email :</span>
+                                <span class="info-value" id="patient-email">allegra.okemba@email.cg</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contacts médicaux -->
+                    <div class="info-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user-md"></i> Contacts médicaux</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-row">
+                                <span class="info-label">Médecin traitant :</span>
+                                <span class="info-value" id="medecin-traitant">Dr. Stevens LIKIBI</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Téléphone médecin :</span>
+                                <span class="info-value" id="medecin-telephone">+242 05 599 05 05</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Contact urgence :</span>
+                                <span class="info-value" id="contact-urgence">Jean OKEMBA (+242 06 123 45 67)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Données médicales -->
+            <section id="medical" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-heartbeat"></i> Données médicales</h2>
+                    <button class="btn-add" onclick="declarerDonneeMedicale()">
+                        <i class="fas fa-plus"></i> Déclarer une information
+                    </button>
+                </div>
+                
+                <div class="medical-grid">
+                    <!-- Groupe sanguin -->
+                    <div class="medical-card">
+                        <div class="card-header blood-type">
+                            <h3><i class="fas fa-tint"></i> Groupe sanguin</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="blood-display">
+                                <span class="blood-group" id="blood-group-display">A+</span>
+                                <span class="blood-info">Rhésus positif</span>
+                            </div>
+                            <p class="blood-note">Dernière vérification : <span id="blood-verification">10/05/2025</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Allergies -->
+                    <div class="medical-card">
+                        <div class="card-header allergy">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Allergies</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="allergies-container">
+                                <!-- Allergies chargées dynamiquement -->
+                            </div>
+                            <button class="btn-add-small" onclick="ajouterAllergie()">
+                                <i class="fas fa-plus-circle"></i> Ajouter une allergie
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Antécédents -->
+                    <div class="medical-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Antécédents médicaux</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="antecedents-list" id="antecedents-container">
+                                <!-- Antécédents chargés dynamiquement -->
+                            </ul>
+                            <button class="btn-add-small" onclick="ajouterAntecedent()">
+                                <i class="fas fa-plus-circle"></i> Ajouter un antécédent
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Données physiques -->
+                    <div class="medical-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-weight"></i> Données physiques</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="physical-data" id="physical-data-container">
+                                <!-- Données physiques chargées dynamiquement -->
+                            </div>
+                            <button class="btn-add-small" onclick="ajouterDonneePhysique()">
+                                <i class="fas fa-plus-circle"></i> Mettre à jour
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Historique des consultations -->
+            <section id="consultations" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Historique des consultations</h2>
+                    <button class="btn-primary" onclick="prendreRdv()">
+                        <i class="fas fa-calendar-plus"></i> Prendre RDV
+                    </button>
+                </div>
+                
+                <div class="consultations-timeline" id="consultations-container">
+                    <!-- Consultations chargées dynamiquement -->
+                </div>
+            </section>
+
+            <!-- Traitements en cours -->
+            <section id="traitements" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-pills"></i> Traitements en cours</h2>
+                    <button class="btn-primary" onclick="demanderRenouvellement()">
+                        <i class="fas fa-redo"></i> Demander renouvellement
+                    </button>
+                </div>
+                
+                <div class="treatments-container" id="treatments-container">
+                    <!-- Traitements chargés dynamiquement -->
+                </div>
+            </section>
+
+            <!-- Documents médicaux -->
+            <section id="documents" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-medical-alt"></i> Documents médicaux</h2>
+                    <button class="btn-primary" onclick="demanderDocument()">
+                        <i class="fas fa-envelope"></i> Demander un document
+                    </button>
+                </div>
+                
+                <div class="documents-manager">
+                    <div class="documents-filter">
+                        <button class="filter-btn active" data-filter="all">Tous</button>
+                        <button class="filter-btn" data-filter="ordonnance">Ordonnances</button>
+                        <button class="filter-btn" data-filter="resultat">Résultats</button>
+                        <button class="filter-btn" data-filter="imagerie">Imagerie</button>
+                        <button class="filter-btn" data-filter="compte-rendu">Comptes rendus</button>
+                    </div>
+                    
+                    <div class="documents-list" id="documents-list-container">
+                        <!-- Documents chargés dynamiquement -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vaccinations -->
+            <section id="vaccinations" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-syringe"></i> Vaccinations</h2>
+                    <button class="btn-add" onclick="ajouterVaccination()">
+                        <i class="fas fa-plus"></i> Ajouter vaccination
+                    </button>
+                </div>
+                
+                <div class="vaccinations-container" id="vaccinations-container">
+                    <!-- Vaccinations chargées dynamiquement -->
+                </div>
+            </section>
+
+            <!-- Résultats d'analyses -->
+            <section id="analyses" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-vial"></i> Résultats d'analyses</h2>
+                    <button class="btn-primary" onclick="prendreRdvAnalyse()">
+                        <i class="fas fa-calendar-plus"></i> Prendre RDV
+                    </button>
+                </div>
+                
+                <div class="analyses-container" id="analyses-container">
+                    <!-- Analyses chargées dynamiquement -->
+                </div>
+            </section>
+
+            <!-- Fiche d'urgence -->
+            <section id="urgence" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Fiche d'urgence</h2>
+                    <div class="header-actions">
+                        <button class="btn-print" onclick="imprimerFicheUrgence()">
+                            <i class="fas fa-print"></i> Imprimer
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="emergency-card">
+                    <div class="card-body">
+                        <div class="emergency-content" id="emergency-content">
+                            <!-- Contenu d'urgence chargé dynamiquement -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Patient -->
+     <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <img src="../Image/Logo foot.jpg" alt="Mediconnect" class="footer-logo">
+                    <p>Votre plateforme de téléconsultation médicale fiable et sécurisée.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Php/Page_d_Acceuil.php">Accueil</a></li>
+                        <li><a href="../Html/Rdv.html">Rendez-vous</a></li>
+                        <li><a href="../Html/dossier-patient.html">Dossier Médical</a></li>
+                        <li><a href="../Html/Téléconsultation.html">Téléconsultation</a></li>
+                        <li><a href="../Html/Connexion_Inscription.html">Connexion</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +242 05 599 05 05</li>
+                        <li><i class="fas fa-envelope"></i> contact@mediconnect.cg</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Avenue Stephane TCHITCHELE, Centre-ville Pointe-noire</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>À propos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 Mediconnect Téléconsultation. Tous droits réservés.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal pour les formulaires -->
+    <div id="modal-container" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fermerModal()">&times;</span>
+            <div id="modal-body">
+                <!-- Contenu modal dynamique -->
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="../Script/header-patient.js"></script>
+    <script src="../Script/script-patient.js"></script>
+    <script src="../Script/avatar.js"></script>
+    <script src="../Script/notification.js"></script>
+</body>
+</html>
