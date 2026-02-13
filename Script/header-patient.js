@@ -1,13 +1,8 @@
-// ===========================================
 // SCRIPT POUR LE HEADER PATIENT
-// ===========================================
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Header patient chargé');
     
-    // =============================
     // 1. GESTION DES NOTIFICATIONS
-    // =============================
     
     const notificationsBtn = document.getElementById('notificationsBtn');
     if (notificationsBtn) {
@@ -81,9 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fermerModal();
     };
     
-    // =============================
     // 2. GESTION DU PROFIL UTILISATEUR
-    // =============================
     
     const patientAvatar = document.getElementById('patientAvatar');
     if (patientAvatar) {
@@ -133,14 +126,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // =============================
     // 3. GESTION DE LA NAVIGATION
-    // =============================
     
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            if (this.getAttribute('href') === 'Connexion.html') {
+            if (this.getAttribute('href') === 'Connexion_Inscription.html') {
                 e.preventDefault();
                 confirmLogout();
             }
@@ -175,15 +166,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         setTimeout(() => {
-            window.location.href = 'Connexion.html';
+            window.location.href = 'Connexion_Inscription.html';
         }, 1500);
         
         fermerModal();
     };
     
-    // =============================
     // 4. FONCTIONS UTILITAIRES POUR LE HEADER
-    // =============================
     
     function fermerModal() {
         // Cette fonction est définie dans le script principal
@@ -192,9 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // =============================
     // 5. AJOUT DE STYLES POUR LE HEADER
-    // =============================
     
     const headerStyles = document.createElement('style');
     headerStyles.textContent = `

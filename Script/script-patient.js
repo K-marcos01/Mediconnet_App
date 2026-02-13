@@ -1,20 +1,14 @@
-// ===========================================
 // SCRIPT PRINCIPAL POUR LE DOSSIER MEDICAL
-// ===========================================
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Dossier médical chargé');
     
-    // =============================
     // 1. INITIALISATION
-    // =============================
     initializePage();
     loadPatientData();
     loadMedicalData();
     
-    // =============================
     // 2. GESTION DE LA SIDEBAR
-    // =============================
     
     const sidebarItems = document.querySelectorAll('.sidebar-item');
     const contentSections = document.querySelectorAll('.content-section');
@@ -54,9 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // =============================
     // 3. FONCTIONS D'INITIALISATION
-    // =============================
     
     function initializePage() {
         // Initialiser les compteurs
@@ -75,12 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadPatientData() {
         // Simuler le chargement des données du patient
         const patientData = {
-            nom: "OKEMBA",
-            prenom: "Allegra",
-            naissance: "15/08/2000",
-            age: 25,
-            sexe: "Féminin",
-            adresse: "Avenue Stephane TCHITCHELE, Pointe-Noire",
+            nom: "Votre nom",
+            prenom: "Votre prénom",
+            naissance: "00/00/0000",
+            age: 0,
+            sexe: "Indéfini",
+            adresse: "Votre adresse",
             telephone: "+242 05 599 05 05",
             email: "allegra.okemba@email.cg",
             medecin: "Dr. Stevens LIKIBI",
@@ -182,9 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // =============================
     // 4. FONCTIONS DE CHARGEMENT PAR SECTION
-    // =============================
     
     function loadConsultations() {
         const consultationsData = [

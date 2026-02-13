@@ -11,54 +11,7 @@
 </head>
 <body>
     <!-- Header Patient   -->
-    <header class="patient-header">
-        <div class="header-container">
-            <div class="patient-brand">
-                <a href="../Php/Page_d_Acceuil.php" class="logo-link">
-                    <img src="../Image/Logo Vf.jpg" alt="Mediconnect" class="header-logo">
-                    <div class="logo-text">
-                        <h1>Mediconnect <span class="patient-tag">PATIENT</span></h1>
-                        <p class="subtitle">Votre santé notre priorité</p>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="patient-controls">
-                <div class="patient-profile">
-                    <div class="patient-info">
-                        <span class="patient-name" id="patientHeaderName">Allegra OKEMBA</span>
-                        <span class="patient-id">ID: PAT-2025-OKEMBA</span>
-                    </div>
-                    <a href="../Html/profil-patient.html" class="patient-avatar" id="patientAvatar">
-                        <i class="fas fa-user"></i>
-                    </a>
-                    <div class="patient-notifications" id="notificationsBtn">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-count" id="notificationCount">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Navigation Patient -->
-       <nav class="patient-nav" id="mainNav">
-      <a href="../Php/Page_d_Acceuil.php" class="nav-link " data-page="dashboard">
-        <i class="fas fa-home"></i> Accueil
-      </a>
-      <a href="../Html/dossier-patient.html" class="nav-link" data-page="dossier">
-        <i class="fas fa-file-medical"></i> Mon dossier
-      </a>
-      <a href="../Html/Rdv.html" class="nav-link active" data-page="rdv">
-        <i class="fas fa-calendar-alt"></i> Mes rendez-vous
-      </a>
-      <a href="../Html/Téléconsultation.html" class="nav-link" data-page="teleconsultation">
-        <i class="fas fa-video"></i> Téléconsultations
-      </a>
-      <a href="../Html/Connexion_Inscription.html" class="nav-link" data-page="connexion">
-        <i class="fas fa-sign-out-alt"></i> Déconnexion
-      </a>
-    </nav>
-    </header>
+    <?php include '../Include/Header_patient.html';?>
 
 <!-- Popup des notifications (initialement cachée via CSS/JS) -->
     <div class="notifications-popup" id="notificationsPopup">
@@ -195,53 +148,7 @@
             </div>
         </section>
     </div>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-section">
-                    <img src="../Image/Logo foot.jpg" alt="Mediconnect" class="footer-logo">
-                    <p>Votre plateforme de téléconsultation médicale fiable et sécurisée.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Navigation</h3>
-                    <ul class="footer-links">
-                        <li><a href="Page_d_Acceuil.html">Accueil</a></li>
-                        <li><a href="Rdv.html">Rendez-vous</a></li>
-                        <li><a href="dossier-patient.html">Dossier Médical</a></li>
-                        <li><a href="teleconsultation.css">Téléconsultation</a></li>
-                        <li><a href="Connexion.html">Connexion</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-phone"></i> +242 05 599 05 05</li>
-                        <li><i class="fas fa-envelope"></i> contact@mediconnect.cg</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Avenue Stephane TCHITCHELE, Centre-ville Pointe-noire</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>À propos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Mentions légales</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Conditions d'utilisation</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="copyright">
-                    &copy; 2025 Mediconnect Téléconsultation. Tous droits réservés.
-                </div>
-                <div class="footer-bottom-links">
-                    <a href="#">Mentions légales</a>
-                    <a href="#">Politique de confidentialité</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+<?php include '../Include/Footer_patient.html';?>
 
     <script src="../Script/Style_RDV.js"></script>
     <script src="../Script/avatar.js"></script>

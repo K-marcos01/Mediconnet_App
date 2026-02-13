@@ -6,56 +6,11 @@
     <title>Agenda - Mediconnect Médecin</title>
     <link rel="stylesheet" href="../Css/style-medecin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../Include/Header_médecin.css">
+    <link rel="stylesheet" href="../Include/Footer_médecin.css">
 </head>
 <body>
-    <!-- Header Médecin (identique) -->
-   <header class="doctor-header">
-        <div class="header-container">
-            <div class="doctor-brand">
-                <a href="../Php/dashboard.php" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="../Image/Logo Vf.jpg" alt="Mediconnect" class="header-logo">
-                    <div>
-                        <h1>Mediconnect <span class="professional">PROFESSIONNEL</span></h1>
-                        <p class="subtitle">Plateforme médicale sécurisée</p>
-                    </div>
-                </a>
-            </div>
-            
-            <button class="menu-toggle" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <div class="doctor-controls">
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Rechercher...">
-                </div>
-                
-                <div class="doctor-profile">
-                    <div class="doctor-info">
-                        <span class="doctor-name">User</span>
-                        <span class="doctor-specialty">Spécialité</span>
-                    </div>
-                    <div class="doctor-avatar">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <div class="doctor-notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-count">5</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <nav class="doctor-nav">
-            <a href="../Php/dashboard.php" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Tableau de bord</a>
-            <a href="../Séparation_médécin/agenda.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Agenda</a>
-            <a href="../Séparation_médécin/dossier-medecin.html" class="nav-link"><i class="fas fa-folder-open"></i> Dossiers médicaux</a>
-            <a href="../Séparation_médécin/Téléconsultation2.html" class="nav-link"><i class="fas fa-video"></i> Téléconsultations</a>
-            <a href="../Html/Connexion_Inscription.html" class="nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
-        </nav>
-    </header>
-
+    <?php include '../Include/Header_médecin.html'; ?>
     <!-- Contenu principal -->
     <div class="doctor-container">
         <main class="dossier-main">
@@ -193,29 +148,8 @@
             </div>
         </main>
     </div>
-
-    <!-- Footer (identique) -->
-    <footer class="doctor-footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img src="../Image/Logo foot.jpg" alt="Mediconnect" class="footer-logo">
-                    <p>Plateforme professionnelle pour les médecins</p>
-                    <p class="footer-contact">Assistance technique : support@mediconnect.cg</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Accès rapide</h4>
-                    <a href="#"><i class="fas fa-question-circle"></i> Aide en ligne</a>
-                    <a href="#"><i class="fas fa-book"></i> Documentation</a>
-                    <a href="#"><i class="fas fa-phone"></i> Support technique</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Mediconnect Téléconsultation - Version Professionnelle 2.1</p>
-                <p>Accès sécurisé et certifié</p>
-            </div>
-        </div>
-    </footer>
-<link rel="stylesheet" href="../Script/script-agenda.js">
+<?php include '../Include/Footer_médecin.html'; ?>
+<script src="../Script/script-agenda.js"></script>
+<script src="../Script/script-tableau de bord.js"></script>
 </body>
 </html>
